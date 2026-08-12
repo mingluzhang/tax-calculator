@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="TaxCalculator.ConsoleApp/TaxCalculator.ConsoleApp.csproj" />
+  <Project Path="TaxCalculator.Tests/TaxCalculator.Tests.csproj" />
+  <Project Path="TaxCalculator/TaxCalculator.csproj" />
+</Solution>
