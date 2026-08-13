@@ -14,12 +14,13 @@ public class PayslipGenerator
         if (employee is null)
             throw new ArgumentNullException(nameof(employee));
 
-        decimal salary = employee.AnnualSalary;
+        decimal salary = employee.AnnualSalary.Amount;
+        Currency currency = employee.AnnualSalary.Currency;
 
-        return new Payslip(
-            employee.Name,
-            _calculator.GetMonthlyIncome(salary),
-            _calculator.GetMonthlyIncomeTax(salary),
-            _calculator.GetNetMonthlyIncome(salary));
+        var gross = new Money(_calculator.GetMonthlyIncome(salary), currency);
+        var tax = new Money(_calculator.GetMonthlyIncomeTax(salary), currency);
+        var net = new Money(_calculator.GetNetMonthlyIncome(salary), currency);
+
+        return new Payslip(employee.Name, gross, tax, net);
     }
 }

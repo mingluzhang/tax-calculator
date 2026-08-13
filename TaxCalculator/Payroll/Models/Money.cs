@@ -10,12 +10,6 @@ public record Money(decimal Amount, Currency Currency)
         return this with { Amount = Amount - other.Amount };
     }
 
-    public Money Add(Money other)
-    {
-        ValidateSameCurrency(other);
-        return this with { Amount = Amount + other.Amount };
-    }
-
     public override string ToString()
     {
         return Symbol(Currency) + Amount.ToString("0.00", CultureInfo.InvariantCulture);

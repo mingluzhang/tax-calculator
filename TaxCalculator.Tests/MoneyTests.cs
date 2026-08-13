@@ -5,10 +5,10 @@ public class MoneyTests
     [Fact]
     public void Subtract_WithSameCurrency_ReturnsDifference()
     {
-        var gross = new Money(5000m, Currency.AUD);
-        var tax = new Money(500m, Currency.AUD);
+        var gross = new Money(5000m, Currency.NZD);
+        var tax = new Money(500m, Currency.NZD);
         var net = gross.Subtract(tax);
-        Assert.Equal(new Money(4500m, Currency.AUD), net);
+        Assert.Equal(new Money(4500m, Currency.NZD), net);
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public class MoneyTests
     [InlineData(0, "$0.00")]
     public void ToString_FormatsWithSymbolAndTwoDecimals(decimal amount, string expected)
     {
-        var money = new Money(amount, Currency.AUD);
+        var money = new Money(amount, Currency.NZD);
         Assert.Equal(expected, money.ToString());
     }
 }

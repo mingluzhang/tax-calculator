@@ -15,14 +15,9 @@ public class PayslipFormatter
     {
         return $"""
             Monthly Payslip for: "{payslip.Name}"
-            Gross Monthly Income: {Money(payslip.GrossMonthlyIncome)}
-            Monthly Income Tax: {Money(payslip.MonthlyIncomeTax)}
-            Net Monthly Income: {Money(payslip.NetMonthlyIncome)}
+            Gross Monthly Income: {payslip.GrossMonthlyIncome}
+            Monthly Income Tax: {payslip.MonthlyIncomeTax}
+            Net Monthly Income: {payslip.NetMonthlyIncome}
             """;
-    }
-
-    private string Money(decimal amount)
-    {
-        return "$" + amount.ToString("0.00", _culture);
     }
 }

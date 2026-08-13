@@ -14,7 +14,10 @@ public class PayslipFormatterTests
     [Fact]
     public void Format_WithExamplePayslip()
     {
-        var payslip = new Payslip("Mary Song", 5000m, 500m, 4500m);
+        var payslip = new Payslip("Mary Song",
+            new Money(5000m, Currency.NZD),
+            new Money(500m, Currency.NZD),
+            new Money(4500m, Currency.NZD));
 
         string result = Normalize(_formatter.Format(payslip));
 
@@ -31,7 +34,10 @@ public class PayslipFormatterTests
     [Fact]
     public void Format_WithNonDivisibleAmounts_RoundsToTwoDecimals()
     {
-        var payslip = new Payslip("Mary Song", 8333.3333m, 1333.3333m, 7000m);
+        var payslip = new Payslip("Mary Song",
+            new Money(8333.3333m, Currency.NZD),
+            new Money(1333.3333m, Currency.NZD),
+            new Money(7000m, Currency.NZD));
 
         string result = Normalize(_formatter.Format(payslip));
 
