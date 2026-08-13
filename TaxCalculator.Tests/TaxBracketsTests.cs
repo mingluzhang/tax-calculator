@@ -32,4 +32,27 @@ public class TaxBracketsTests
         decimal monthlyTax = _brackets.CalculateMonthlyTax(salary);
         Assert.Equal(expectedMonthlyTaxRounded, monthlyTax, 2);
     }
+
+    [Fact]
+    public void Constructor_WithNullBrackets_ThrowsArgumentNullException()
+    {
+        Assert.Throws<ArgumentNullException>(() => new TaxBrackets(null!));
+    }
+
+    [Fact]
+    public void Constructor_WithEmptyBrackets_ThrowsArgumentException()
+    {
+        Assert.Throws<ArgumentException>(() => new TaxBrackets(new List<TaxBracket>()));
+    }
+
+    [Fact]
+    public void Constructor_WithUnorderedBrackets_ThrowsArgumentException()
+    {
+        var unordered = new List<TaxBracket>
+        {
+            new(40000m, 0.10m),
+            new(20000m, 0m),
+        };
+        Assert.Throws<ArgumentException>(() => new TaxBrackets(unordered));
+    }
 }

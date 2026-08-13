@@ -6,7 +6,7 @@ public class TaxBrackets
 
     public TaxBrackets(IReadOnlyList<TaxBracket> brackets)
     {
-        _brackets = brackets;
+        _brackets = Validated(brackets);
     }
 
     public decimal CalculateAnnualTax(decimal salary)
@@ -32,5 +32,20 @@ public class TaxBrackets
     public decimal CalculateMonthlyTax(decimal salary)
     {
         return CalculateAnnualTax(salary) / 12m;
+    }
+
+    private static IReadOnlyList<TaxBracket> Validated(IReadOnlyList<TaxBracket> brackets)
+    {
+        if (brackets is null)
+            throw new ArgumentNullException(nameof(brackets));
+        
+        if (brackets.Count == 0)
+            throw new ArgumentException("Tax brackets cannot be empty.", nameof(brackets));
+        
+        for (int i = 1; i < brackets.Count; i++)
+            if (brackets[i].UpperBound <= brackets[i - 1].UpperBound)
+                throw new ArgumentException("Tax brackets must be ascending by UpperBound.", nameof(brackets));
+
+        return brackets;
     }
 }
