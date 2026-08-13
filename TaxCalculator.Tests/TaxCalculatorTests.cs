@@ -2,24 +2,28 @@
 
 public class TaxCalculatorTests
 {
+    private readonly TaxCalculator _calculator;
+
+    public TaxCalculatorTests()
+    {
+        _calculator = new TaxCalculator(DefaultTaxBrackets.Brackets());
+    }
+    
     [Fact]
     public void GetMonthlyIncome_WithExampleSalary()
     {
-        var calculator = new TaxCalculator();
-        Assert.Equal(5000m, calculator.GetMonthlyIncome(60000m));
+        Assert.Equal(5000m, _calculator.GetMonthlyIncome(60000m));
     }
 
     [Fact]
     public void GetMonthlyIncomeTax_WithExampleSalary()
     {
-        var calculator = new TaxCalculator();
-        Assert.Equal(500m, calculator.GetMonthlyIncomeTax(60000m));
+        Assert.Equal(500m, _calculator.GetMonthlyIncomeTax(60000m));
     }
 
     [Fact]
     public void GetNetMonthlyIncome_WithExampleSalary()
     {
-        var calculator = new TaxCalculator();
-        Assert.Equal(4500m, calculator.GetNetMonthlyIncome(60000m));
+        Assert.Equal(4500m, _calculator.GetNetMonthlyIncome(60000m));
     }
 }

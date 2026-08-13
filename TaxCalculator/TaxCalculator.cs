@@ -2,23 +2,18 @@
 
 public class TaxCalculator
 {
-    private static readonly TaxBrackets Brackets = new(new List<TaxBracket>
-    {
-        new(20000m, 0m),
-        new(40000m, 0.10m),
-        new(80000m, 0.20m),
-        new(180000m, 0.30m),
-        new(decimal.MaxValue, 0.40m),
-    });
+    private readonly TaxBrackets _brackets;
 
-    public decimal GetMonthlyIncome(decimal salary)
+    public TaxCalculator(TaxBrackets brackets)
     {
-        return salary / 12m;
+        _brackets = brackets ?? throw new ArgumentNullException(nameof(brackets));
     }
+
+    public decimal GetMonthlyIncome(decimal salary) => salary / 12m;
 
     public decimal GetMonthlyIncomeTax(decimal salary)
     {
-        return Brackets.CalculateMonthlyTax(salary);
+        return _brackets.CalculateMonthlyTax(salary);
     }
 
     public decimal GetNetMonthlyIncome(decimal salary)
