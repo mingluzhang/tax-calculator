@@ -6,7 +6,7 @@ public class TaxCalculatorTests
 
     public TaxCalculatorTests()
     {
-        _calculator = new TaxCalculator(DefaultTaxBrackets.Brackets());
+        _calculator = new TaxCalculator(ExampleTaxBrackets.Brackets());
     }
     
     [Fact]

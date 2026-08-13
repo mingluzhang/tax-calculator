@@ -6,7 +6,7 @@ public class PayslipGeneratorTests
 
     public PayslipGeneratorTests()
     {
-        var calculator = new TaxCalculator(DefaultTaxBrackets.Brackets());
+        var calculator = new TaxCalculator(ExampleTaxBrackets.Brackets());
         _generator = new PayslipGenerator(calculator);
     }
 

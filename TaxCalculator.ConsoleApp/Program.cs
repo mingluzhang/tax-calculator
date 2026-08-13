@@ -1,6 +1,6 @@
 ﻿using TaxCalculator;
 
-var brackets = DefaultTaxBrackets.Brackets();
+var brackets = ExampleTaxBrackets.Brackets();
 var calculator = new TaxCalculator.TaxCalculator(brackets);
 var generator = new PayslipGenerator(calculator);
 

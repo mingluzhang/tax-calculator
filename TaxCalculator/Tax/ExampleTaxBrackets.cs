@@ -1,6 +1,6 @@
 namespace TaxCalculator;
 
-public static class DefaultTaxBrackets
+public static class ExampleTaxBrackets
 {
     public static TaxBrackets Brackets() => new(new List<TaxBracket>
     {

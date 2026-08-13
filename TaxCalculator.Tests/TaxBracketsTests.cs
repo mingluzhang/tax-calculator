@@ -6,7 +6,7 @@ public class TaxBracketsTests
 
     public TaxBracketsTests()
     {
-        _brackets = DefaultTaxBrackets.Brackets();
+        _brackets = ExampleTaxBrackets.Brackets();
     }
 
     [Theory]
