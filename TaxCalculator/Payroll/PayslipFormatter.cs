@@ -2,16 +2,9 @@ using System.Globalization;
 
 namespace TaxCalculator;
 
-public class PayslipFormatter
+public static class PayslipFormatter
 {
-    private readonly CultureInfo _culture;
-
-    public PayslipFormatter(CultureInfo? culture = null)
-    {
-        _culture = culture ?? CultureInfo.InvariantCulture;
-    }
-
-    public string Format(Payslip payslip)
+    public static string Format(Payslip payslip)
     {
         return $"""
             Monthly Payslip for: "{payslip.Name}"
